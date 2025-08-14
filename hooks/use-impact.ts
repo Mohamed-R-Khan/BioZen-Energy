@@ -1,42 +1,34 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { siteConfig } from "@/lib/site-config"
+import { useState, useCallback } from "react"
 
 interface ImpactData {
   wasteKg: number
   co2Kg: number
   tokensIssued: number
   members: number
-  refresh: () => void
 }
 
-export function useImpact(): ImpactData {
-  const [data, setData] = useState({
-    wasteKg: 0,
-    co2Kg: 0,
-    tokensIssued: 0,
-    members: 0,
+export function useImpact() {
+  const [data, setData] = useState<ImpactData>({
+    wasteKg: 125420,
+    co2Kg: 43890,
+    tokensIssued: 892340,
+    members: 15670,
   })
 
-  const refresh = () => {
-    // Simulate slight variations in real-world data
-    const variance = (base: number, factor = 0.1) => Math.floor(base + (Math.random() - 0.5) * base * factor)
-
+  const refresh = useCallback(() => {
+    // Simulate data refresh with slight variations
     setData({
-      wasteKg: variance(siteConfig.mockMetrics.wasteKg),
-      co2Kg: variance(siteConfig.mockMetrics.co2Kg),
-      tokensIssued: variance(siteConfig.mockMetrics.tokensIssued),
-      members: variance(siteConfig.mockMetrics.members, 0.05),
+      wasteKg: Math.floor(125420 + Math.random() * 5000),
+      co2Kg: Math.floor(43890 + Math.random() * 2000),
+      tokensIssued: Math.floor(892340 + Math.random() * 10000),
+      members: Math.floor(15670 + Math.random() * 500),
     })
-  }
-
-  useEffect(() => {
-    refresh()
-    // Auto-refresh every 30 seconds
-    const interval = setInterval(refresh, 30000)
-    return () => clearInterval(interval)
   }, [])
 
-  return { ...data, refresh }
+  return {
+    ...data,
+    refresh,
+  }
 }

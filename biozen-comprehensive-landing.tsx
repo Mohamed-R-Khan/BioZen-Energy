@@ -8,7 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Recycle,
   Coins,
@@ -26,7 +25,6 @@ import {
   Clock,
   ChevronRight,
   Mail,
-  ExternalLink,
   Download,
   BarChart3,
   Globe,
@@ -753,13 +751,14 @@ const FAQ = () => {
 }
 
 const Team = () => {
-  const getInitials = (name: string) => {
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-  }
+  const teamMembers = [
+    { name: "Raafe Khan", role: "CEO" },
+    { name: "Kirtish Cheyyur", role: "CFO" },
+    { name: "Mishal", role: "CTO" },
+    { name: "Hari Om Trivedi", role: "CRO" },
+    { name: "Wayne", role: "Operations Lead" },
+    { name: "Jocelyn", role: "HR Lead" },
+  ]
 
   return (
     <section className="py-24 bg-white">
@@ -778,29 +777,18 @@ const Team = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
         >
-          {siteConfig.team.map((member, index) => (
+          {teamMembers.map((member, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-                <Avatar className="w-24 h-24 mx-auto mb-4">
-                  <AvatarImage src={`/assets/team/${member.slug}.jpg`} alt={`${member.name} - ${member.role}`} />
-                  <AvatarFallback className="text-xl bg-green-100 text-green-600">
-                    {getInitials(member.name)}
-                  </AvatarFallback>
-                </Avatar>
-                <CardHeader className="p-0 mb-4">
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
-                  <CardDescription className="text-green-600 font-medium">{member.role}</CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <Button variant="ghost" size="sm" className="text-gray-400 hover:text-green-600">
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
+              <Card className="text-center p-8 hover:shadow-lg transition-shadow border-2 hover:border-green-200">
+                <CardContent className="p-0 space-y-3">
+                  <h3 className="text-2xl font-bold text-gray-900">{member.name}</h3>
+                  <p className="text-lg text-green-600 font-semibold">{member.role}</p>
                 </CardContent>
               </Card>
             </motion.div>
