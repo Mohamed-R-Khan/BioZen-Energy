@@ -1,12 +1,12 @@
 import { Layout } from "../components/layout"
 import { PageTransition } from "../components/page-transition"
-import BioZenResearchLanding from "../biozen-research-landing"
+import BioZenComprehensiveLanding from "../biozen-comprehensive-landing"
 
 export default function Page() {
   return (
     <Layout>
       <PageTransition>
-        <BioZenResearchLanding />
+        <BioZenComprehensiveLanding />
       </PageTransition>
     </Layout>
   )

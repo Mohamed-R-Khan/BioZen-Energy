@@ -1,211 +1,492 @@
 "use client"
 
-import { Layout } from "../../components/layout"
-import { PageTransition } from "../../components/page-transition"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
-import { Recycle, Coins, Smartphone, Zap, Shield, Users } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import {
+  Recycle,
+  Coins,
+  Gift,
+  ArrowRight,
+  Scale,
+  Scan,
+  Shield,
+  Zap,
+  Leaf,
+  Download,
+  Users,
+  Building,
+} from "lucide-react"
+import Link from "next/link"
+import { Layout } from "@/components/layout"
+import { PageTransition } from "@/components/page-transition"
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6 },
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const ProcessOverview = () => (
+  <section className="py-24 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div className="container px-4 md:px-6">
+      <motion.div className="text-center mb-16" initial="initial" animate="animate" variants={fadeInUp}>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">How It Works</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Our complete waste-to-wealth cycle that transforms your everyday waste into valuable rewards and clean energy
+        </p>
+      </motion.div>
+
+      <motion.div className="max-w-6xl mx-auto" initial="initial" animate="animate" variants={staggerContainer}>
+        <div className="grid lg:grid-cols-4 gap-8 items-center">
+          {/* Step 1 */}
+          <motion.div variants={fadeInUp}>
+            <Card className="text-center p-6 h-full">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Recycle className="w-8 h-8 text-green-600" />
+              </div>
+              <CardTitle className="mb-3">Drop Waste</CardTitle>
+              <CardDescription>Segregated organic & recyclable waste</CardDescription>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="hidden lg:flex justify-center">
+            <ArrowRight className="w-8 h-8 text-green-500" />
+          </motion.div>
+
+          {/* Step 2 */}
+          <motion.div variants={fadeInUp}>
+            <Card className="text-center p-6 h-full">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Coins className="w-8 h-8 text-blue-600" />
+              </div>
+              <CardTitle className="mb-3">Earn Tokens</CardTitle>
+              <CardDescription>Instant ZenDollar rewards</CardDescription>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={fadeInUp} className="hidden lg:flex justify-center">
+            <ArrowRight className="w-8 h-8 text-green-500" />
+          </motion.div>
+
+          {/* Step 3 */}
+          <motion.div variants={fadeInUp}>
+            <Card className="text-center p-6 h-full">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Gift className="w-8 h-8 text-purple-600" />
+              </div>
+              <CardTitle className="mb-3">Redeem Rewards</CardTitle>
+              <CardDescription>Green gifts & sustainable products</CardDescription>
+            </Card>
+          </motion.div>
+        </div>
+
+        <motion.div variants={fadeInUp} className="mt-12 text-center">
+          <Card className="p-8 bg-gradient-to-r from-green-500 to-emerald-600 text-white">
+            <div className="flex items-center justify-center space-x-4">
+              <Zap className="w-8 h-8" />
+              <span className="text-xl font-semibold">Meanwhile, your waste becomes clean Bio-CNG energy!</span>
+              <Leaf className="w-8 h-8" />
+            </div>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
+)
+
+const TokenEarningRules = () => {
+  const categories = [
+    {
+      category: "Organic Waste",
+      rate: "5 ZenDollars per kg",
+      examples: ["Food scraps", "Vegetable peels", "Garden waste", "Paper towels"],
+      color: "green",
+    },
+    {
+      category: "Recyclable Plastic",
+      rate: "8 ZenDollars per kg",
+      examples: ["PET bottles", "Clean containers", "Plastic bags", "Food packaging"],
+      color: "blue",
+    },
+    {
+      category: "Paper & Cardboard",
+      rate: "3 ZenDollars per kg",
+      examples: ["Newspapers", "Magazines", "Cardboard boxes", "Office paper"],
+      color: "orange",
+    },
+    {
+      category: "Metal & Glass",
+      rate: "10 ZenDollars per kg",
+      examples: ["Aluminum cans", "Glass bottles", "Metal containers", "Tin cans"],
+      color: "purple",
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container px-4 md:px-6">
+        <motion.div
+          className="text-center mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Token Earning Rules</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Transparent rates for different waste categories, weighed accurately at smart collection booths
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          {categories.map((item, index) => (
+            <motion.div key={index} variants={fadeInUp}>
+              <Card className="h-full p-6">
+                <CardHeader className="p-0 mb-4">
+                  <Badge
+                    className={`w-fit mb-2 bg-${item.color}-100 text-${item.color}-700 hover:bg-${item.color}-200`}
+                  >
+                    {item.category}
+                  </Badge>
+                  <CardTitle className={`text-2xl text-${item.color}-600`}>{item.rate}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <ul className="space-y-2">
+                    {item.examples.map((example, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-600">
+                        <div className={`w-2 h-2 bg-${item.color}-400 rounded-full mr-2`} />
+                        {example}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="mt-16 max-w-4xl mx-auto"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <Card className="p-8 bg-yellow-50 border-yellow-200">
+            <div className="flex items-start space-x-4">
+              <Shield className="w-8 h-8 text-yellow-600 mt-1" />
+              <div>
+                <h3 className="text-xl font-bold text-yellow-800 mb-3">Abuse Prevention & Quality Control</h3>
+                <ul className="space-y-2 text-yellow-700">
+                  <li>• All waste must be properly segregated and clean</li>
+                  <li>• Smart scales detect and reject contaminated materials</li>
+                  <li>• Daily limits apply to prevent system gaming</li>
+                  <li>• Quality inspections ensure waste processing standards</li>
+                  <li>• KYC verification may be required for large deposits</li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+const BioCNGProcess = () => (
+  <section className="py-24 bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="container px-4 md:px-6">
+      <motion.div
+        className="text-center mb-16"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Bio-CNG Production Process</h2>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Advanced anaerobic digestion technology converts organic waste into clean, renewable Bio-CNG
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="max-w-6xl mx-auto"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <div className="grid lg:grid-cols-5 gap-8 items-center">
+          {[
+            { title: "Collection", icon: Recycle, description: "Segregated organic waste collected from smart booths" },
+            { title: "Preparation", icon: Scale, description: "Waste is sorted, cleaned, and prepared for digestion" },
+            {
+              title: "Digestion",
+              icon: Zap,
+              description: "Anaerobic bacteria break down organic matter in oxygen-free environment",
+            },
+            {
+              title: "Purification",
+              icon: Scan,
+              description: "Raw biogas is cleaned and purified to Bio-CNG standards",
+            },
+            {
+              title: "Distribution",
+              icon: Gift,
+              description: "Clean Bio-CNG distributed for cooking, heating, and transport",
+            },
+          ].map((step, index) => (
+            <motion.div key={index} variants={fadeInUp}>
+              <Card className="text-center p-6 h-full">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-8 h-8 text-green-600" />
+                </div>
+                <CardTitle className="mb-3 text-lg">{step.title}</CardTitle>
+                <CardDescription className="text-sm">{step.description}</CardDescription>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div variants={fadeInUp} className="mt-12">
+          <Card className="p-8 bg-white shadow-lg">
+            <h3 className="text-2xl font-bold text-center mb-6">Environmental Benefits</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Leaf className="w-8 h-8 text-green-600" />
+                </div>
+                <h4 className="font-semibold mb-2">Reduces Methane</h4>
+                <p className="text-gray-600 text-sm">Prevents methane emissions from landfills</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold mb-2">Clean Energy</h4>
+                <p className="text-gray-600 text-sm">Replaces fossil fuels with renewable Bio-CNG</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Recycle className="w-8 h-8 text-purple-600" />
+                </div>
+                <h4 className="font-semibold mb-2">Circular Economy</h4>
+                <p className="text-gray-600 text-sm">Waste becomes valuable resource</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
+)
+
+const CarbonMath = () => (
+  <section className="py-24 bg-white">
+    <div className="container px-4 md:px-6">
+      <motion.div
+        className="max-w-4xl mx-auto text-center"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Carbon Impact Calculation</h2>
+        <p className="text-xl text-gray-600 mb-12">
+          Every kilogram of waste you deposit creates measurable environmental impact, tracked and verified through
+          ZenVolt credits
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <Card className="p-8 text-left">
+            <h3 className="text-2xl font-bold mb-6">CO₂ Avoidance Formula</h3>
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-semibold mb-2">Landfill Diversion</h4>
+                <p className="text-gray-600 text-sm">1 kg organic waste = 0.5 kg CO₂ methane avoided</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-semibold mb-2">Bio-CNG Production</h4>
+                <p className="text-gray-600 text-sm">1 kg waste = 0.2 m³ Bio-CNG = 0.4 kg CO₂ fossil fuel replaced</p>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h4 className="font-semibold text-green-800 mb-2">Total Impact</h4>
+                <p className="text-green-700 text-sm font-medium">1 kg waste = 0.9 kg CO₂ equivalent saved</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 text-left">
+            <h3 className="text-2xl font-bold mb-6">ZenVolt Credit System</h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-3 h-3 bg-blue-500 rounded-full mt-2" />
+                <div>
+                  <h4 className="font-semibold">Real-time Tracking</h4>
+                  <p className="text-gray-600 text-sm">
+                    Smart contracts automatically calculate and record CO₂ savings
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-3 h-3 bg-blue-500 rounded-full mt-2" />
+                <div>
+                  <h4 className="font-semibold">Blockchain Verification</h4>
+                  <p className="text-gray-600 text-sm">Immutable ledger ensures accurate carbon credit accounting</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="w-3 h-3 bg-blue-500 rounded-full mt-2" />
+                <div>
+                  <h4 className="font-semibold">Third-party Audits</h4>
+                  <p className="text-gray-600 text-sm">Regular verification by certified environmental agencies</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </motion.div>
+    </div>
+  </section>
+)
+
+const HowItWorksFAQ = () => {
+  const faqs = [
+    {
+      question: "How accurate are the smart collection booth scales?",
+      answer:
+        "Our scales are calibrated to ±10g accuracy and undergo monthly certification. They automatically compensate for container weight and environmental factors.",
+    },
+    {
+      question: "What happens if I deposit contaminated waste?",
+      answer:
+        "Contaminated waste is automatically rejected by our scanner system. Clean the waste and try again, or dispose of it through regular waste collection.",
+    },
+    {
+      question: "How long does Bio-CNG production take?",
+      answer:
+        "The anaerobic digestion process takes 15-25 days. However, our facilities operate continuously, so Bio-CNG is produced daily from ongoing waste input.",
+    },
+    {
+      question: "Can I track my individual environmental impact?",
+      answer:
+        "Yes! Your app dashboard shows personal metrics including total waste deposited, ZenDollars earned, CO₂ saved, and your community ranking.",
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-gray-50">
+      <div className="container px-4 md:px-6">
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <h2 className="text-3xl font-bold text-center mb-12">Process FAQ</h2>
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="bg-white rounded-lg border shadow-sm">
+                <AccordionTrigger className="px-6 py-4">{faq.question}</AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600">{faq.answer}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+const CallToActions = () => (
+  <section className="py-24 bg-gradient-to-br from-green-600 to-emerald-700 text-white">
+    <div className="container px-4 md:px-6">
+      <motion.div
+        className="text-center mb-12"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">Ready to Start?</h2>
+        <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          Join thousands of eco-warriors turning waste into wealth and making a measurable environmental impact
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+      >
+        <motion.div variants={fadeInUp}>
+          <Link href="/join">
+            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 px-8 py-6 text-lg">
+              <Users className="w-5 h-5 mr-2" />
+              Join the Movement
+            </Button>
+          </Link>
+        </motion.div>
+
+        <motion.div variants={fadeInUp}>
+          <Link href="/download">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-6 text-lg bg-transparent"
+            >
+              <Download className="w-5 h-5 mr-2" />
+              Download App
+            </Button>
+          </Link>
+        </motion.div>
+
+        <motion.div variants={fadeInUp}>
+          <Link href="/partners">
+            <Button size="lg" variant="ghost" className="text-white hover:bg-white/10 px-8 py-6 text-lg">
+              <Building className="w-5 h-5 mr-2" />
+              Partner with Us
+            </Button>
+          </Link>
+        </motion.div>
+      </motion.div>
+    </div>
+  </section>
+)
 
 export default function HowItWorksPage() {
   return (
     <Layout>
       <PageTransition>
-        <div className="w-full">
-          {/* Hero Section */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-600 to-blue-600">
-            <div className="container px-4 md:px-6">
-              <motion.div
-                className="flex flex-col items-center justify-center space-y-6 text-center text-white"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                  How It Works
-                </Badge>
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl font-mono">How BioZen Works</h1>
-                <p className="max-w-[800px] text-green-100 md:text-xl/relaxed">
-                  Discover the simple yet powerful process that transforms your daily waste into valuable rewards while
-                  contributing to a sustainable future.
-                </p>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Detailed Steps */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-            <div className="container px-4 md:px-6">
-              <div className="space-y-16">
-                {[
-                  {
-                    step: "01",
-                    title: "Drop Segregated Waste",
-                    description: "Visit our smart collection booths located throughout your city",
-                    details:
-                      "Our AI-powered collection booths are strategically placed in residential areas, commercial complexes, and public spaces. Simply bring your properly segregated organic and recyclable waste to any booth.",
-                    icon: Recycle,
-                    color: "green",
-                    features: [
-                      "24/7 accessible smart booths",
-                      "Automatic waste weighing",
-                      "Quality verification system",
-                      "Real-time booth availability",
-                    ],
-                  },
-                  {
-                    step: "02",
-                    title: "Earn ZenDollar Tokens",
-                    description: "Receive blockchain-verified tokens instantly based on waste type and weight",
-                    details:
-                      "Our blockchain system automatically calculates your reward based on the environmental impact of your waste deposit. Different waste types have different token values based on their recycling potential and energy conversion efficiency.",
-                    icon: Coins,
-                    color: "yellow",
-                    features: [
-                      "Instant token generation",
-                      "Blockchain verification",
-                      "Transparent pricing",
-                      "Bonus multipliers available",
-                    ],
-                  },
-                  {
-                    step: "03",
-                    title: "Redeem for Green Gifts",
-                    description: "Use your ZenDollars in our mobile app marketplace for eco-friendly rewards",
-                    details:
-                      "Browse our curated marketplace of sustainable products, from organic foods to eco-friendly household items. Your tokens can also be used for discounts at partner stores or donated to environmental causes.",
-                    icon: Smartphone,
-                    color: "blue",
-                    features: [
-                      "Curated green products",
-                      "Partner store discounts",
-                      "Charity donation options",
-                      "Exclusive member rewards",
-                    ],
-                  },
-                ].map((step, index) => (
-                  <motion.div
-                    key={index}
-                    className={`grid gap-8 lg:grid-cols-2 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                      <div className="flex items-center gap-4">
-                        <div className={`w-16 h-16 rounded-full bg-${step.color}-100 flex items-center justify-center`}>
-                          <step.icon className={`h-8 w-8 text-${step.color}-600`} />
-                        </div>
-                        <div className={`text-6xl font-bold text-${step.color}-600 font-mono opacity-20`}>
-                          {step.step}
-                        </div>
-                      </div>
-                      <div className="space-y-4">
-                        <h3 className="text-3xl font-bold tracking-tighter">{step.title}</h3>
-                        <p className="text-xl text-gray-600 leading-relaxed">{step.description}</p>
-                        <p className="text-gray-500 leading-relaxed">{step.details}</p>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        {step.features.map((feature, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                            <div className={`w-2 h-2 rounded-full bg-${step.color}-400`}></div>
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
-                      <Card className="p-8 bg-gradient-to-br from-gray-50 to-gray-100">
-                        <CardContent className="text-center space-y-4">
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                            className={`w-24 h-24 mx-auto bg-${step.color}-100 rounded-full flex items-center justify-center`}
-                          >
-                            <step.icon className={`w-12 h-12 text-${step.color}-600`} />
-                          </motion.div>
-                          <h4 className="text-xl font-semibold">Step {step.step}</h4>
-                          <p className="text-gray-600">{step.title}</p>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Technology Behind */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-            <div className="container px-4 md:px-6">
-              <motion.div
-                className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
-                  Technology
-                </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-mono">
-                  The Technology Behind BioZen
-                </h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed">
-                  Advanced technology stack powering India's first waste-to-wealth ecosystem
-                </p>
-              </motion.div>
-
-              <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
-                {[
-                  {
-                    icon: Zap,
-                    title: "Anaerobic Digestion",
-                    description:
-                      "Convert organic waste into clean Bio-CNG energy through advanced biological processes",
-                    color: "green",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Blockchain Security",
-                    description:
-                      "Immutable transaction records and transparent reward distribution using blockchain technology",
-                    color: "blue",
-                  },
-                  {
-                    icon: Users,
-                    title: "AI-Powered Sorting",
-                    description:
-                      "Smart waste classification and quality verification using computer vision and machine learning",
-                    color: "purple",
-                  },
-                ].map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card className="h-full text-center hover:shadow-lg transition-shadow duration-300">
-                      <CardHeader>
-                        <motion.div
-                          whileHover={{ scale: 1.1, rotate: 360 }}
-                          transition={{ duration: 0.6 }}
-                          className={`w-16 h-16 rounded-full bg-${tech.color}-100 flex items-center justify-center mx-auto mb-4`}
-                        >
-                          <tech.icon className={`h-8 w-8 text-${tech.color}-600`} />
-                        </motion.div>
-                        <CardTitle className="text-xl">{tech.title}</CardTitle>
-                        <CardDescription className="text-base leading-relaxed">{tech.description}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
+        <div className="min-h-screen">
+          <ProcessOverview />
+          <TokenEarningRules />
+          <BioCNGProcess />
+          <CarbonMath />
+          <HowItWorksFAQ />
+          <CallToActions />
         </div>
       </PageTransition>
     </Layout>
