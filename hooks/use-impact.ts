@@ -9,25 +9,21 @@ interface ImpactData {
   members: number
 }
 
-const mockMetrics: ImpactData = {
-  wasteKg: 125000,
-  co2Kg: 45000,
-  tokensIssued: 89000,
-  members: 15000,
-}
-
 export function useImpact() {
-  const [data, setData] = useState<ImpactData>(mockMetrics)
+  const [data, setData] = useState<ImpactData>({
+    wasteKg: 125000,
+    co2Kg: 45000,
+    tokensIssued: 89000,
+    members: 12500,
+  })
 
   const refresh = useCallback(() => {
     // Simulate data refresh with slight variations
-    const variation = () => Math.floor(Math.random() * 1000) + 500
-
     setData({
-      wasteKg: mockMetrics.wasteKg + variation(),
-      co2Kg: mockMetrics.co2Kg + Math.floor(variation() * 0.3),
-      tokensIssued: mockMetrics.tokensIssued + variation(),
-      members: mockMetrics.members + Math.floor(variation() * 0.1),
+      wasteKg: 125000 + Math.floor(Math.random() * 5000),
+      co2Kg: 45000 + Math.floor(Math.random() * 2000),
+      tokensIssued: 89000 + Math.floor(Math.random() * 3000),
+      members: 12500 + Math.floor(Math.random() * 500),
     })
   }, [])
 

@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
-import { Apple, Play, QrCode, Star, CheckCircle } from "lucide-react"
-import Image from "next/image"
+import { Apple, Play, CheckCircle, Star, Smartphone, Shield, Zap } from "lucide-react"
 
 export default function DownloadPage() {
   return (
@@ -15,121 +14,58 @@ export default function DownloadPage() {
       <PageTransition>
         <div className="w-full">
           {/* Hero Section */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-blue-600 to-green-600">
-            <div className="container px-4 md:px-6">
-              <div className="grid gap-6 lg:grid-cols-2 items-center">
-                <motion.div
-                  className="space-y-6 text-white"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30 w-fit">
-                    📱 Mobile App
-                  </Badge>
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl font-mono">Download BioZen App</h1>
-                  <p className="text-xl text-blue-100 leading-relaxed">
-                    Turn your smartphone into a powerful tool for environmental change. Track waste, earn rewards, and
-                    make a real impact with every deposit.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="bg-black text-white hover:bg-gray-800">
-                      <Apple className="w-5 h-5 mr-2" />
-                      Download for iOS
-                    </Button>
-                    <Button size="lg" className="bg-green-600 text-white hover:bg-green-700">
-                      <Play className="w-5 h-5 mr-2" />
-                      Get it on Android
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-6 text-sm text-blue-100">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4" />
-                      Free download
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4" />
-                      No ads
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4" />
-                      Secure & private
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="flex justify-center"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-white/20 rounded-3xl blur-3xl"></div>
-                    <Image
-                      src="/placeholder.svg?height=600&width=300&text=BioZen+App+Mockup"
-                      width={300}
-                      height={600}
-                      alt="BioZen App Screenshots"
-                      className="relative rounded-3xl shadow-2xl"
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </section>
-
-          {/* QR Code Section */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
             <div className="container px-4 md:px-6">
               <motion.div
                 className="flex flex-col items-center justify-center space-y-8 text-center"
                 initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
               >
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
-                  Quick Download
+                <Badge variant="secondary" className="bg-green-100 text-green-800 border-green-200">
+                  📱 Mobile App
                 </Badge>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-mono">Scan & Download</h2>
-                <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed">
-                  Simply scan the QR code with your phone's camera to download the app instantly
+
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl font-mono text-gray-900">
+                  Download the BioZen App
+                </h1>
+
+                <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+                  Turn your smartphone into a powerful tool for environmental change. Track waste, earn rewards, and
+                  make a real impact with every deposit.
                 </p>
 
-                <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
-                  <Card className="text-center p-8">
-                    <CardHeader>
-                      <div className="w-32 h-32 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <QrCode className="w-16 h-16 text-gray-400" />
-                      </div>
-                      <CardTitle className="flex items-center justify-center gap-2">
-                        <Apple className="w-5 h-5" />
-                        iOS App Store
-                      </CardTitle>
-                      <CardDescription>For iPhone and iPad</CardDescription>
-                    </CardHeader>
-                  </Card>
+                <div className="flex flex-col sm:flex-row gap-6 pt-6">
+                  <Button size="lg" className="bg-black text-white hover:bg-gray-800 px-8 py-6 text-lg">
+                    <Apple className="w-6 h-6 mr-3" />
+                    Download on App Store
+                  </Button>
+                  <Button size="lg" className="bg-green-600 text-white hover:bg-green-700 px-8 py-6 text-lg">
+                    <Play className="w-6 h-6 mr-3" />
+                    Get it on Google Play
+                  </Button>
+                </div>
 
-                  <Card className="text-center p-8">
-                    <CardHeader>
-                      <div className="w-32 h-32 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <QrCode className="w-16 h-16 text-gray-400" />
-                      </div>
-                      <CardTitle className="flex items-center justify-center gap-2">
-                        <Play className="w-5 h-5" />
-                        Google Play Store
-                      </CardTitle>
-                      <CardDescription>For Android devices</CardDescription>
-                    </CardHeader>
-                  </Card>
+                <div className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    Free download
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    No ads
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    Secure & private
+                  </div>
                 </div>
               </motion.div>
             </div>
           </section>
 
           {/* App Features */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
             <div className="container px-4 md:px-6">
               <motion.div
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"
@@ -153,16 +89,19 @@ export default function DownloadPage() {
                     title: "Smart Booth Locator",
                     description: "Find the nearest collection booth with GPS navigation and real-time availability",
                     features: ["GPS navigation", "Real-time status", "Booth ratings"],
+                    icon: Smartphone,
                   },
                   {
                     title: "Reward Tracking",
                     description: "Monitor your ZenDollar earnings and track your environmental impact in real-time",
                     features: ["Live balance", "Transaction history", "Impact metrics"],
+                    icon: Zap,
                   },
                   {
                     title: "Green Marketplace",
                     description: "Browse and redeem eco-friendly products using your earned ZenDollar tokens",
                     features: ["Product catalog", "Instant redemption", "Delivery tracking"],
+                    icon: Shield,
                   },
                 ].map((feature, index) => (
                   <motion.div
@@ -172,8 +111,11 @@ export default function DownloadPage() {
                     transition={{ duration: 0.8, delay: index * 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                      <CardHeader>
+                    <Card className="h-full hover:shadow-lg transition-shadow duration-300 p-6">
+                      <CardHeader className="text-center pb-4">
+                        <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                          <feature.icon className="w-8 h-8 text-green-600" />
+                        </div>
                         <CardTitle className="text-xl">{feature.title}</CardTitle>
                         <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
                       </CardHeader>
@@ -195,7 +137,7 @@ export default function DownloadPage() {
           </section>
 
           {/* App Stats */}
-          <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
             <div className="container px-4 md:px-6">
               <motion.div
                 className="grid gap-8 md:grid-cols-4 text-center"
@@ -228,7 +170,7 @@ export default function DownloadPage() {
           </section>
 
           {/* FAQ Section */}
-          <section id="citizen-app" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
+          <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
             <div className="container px-4 md:px-6">
               <motion.div
                 className="flex flex-col items-center justify-center space-y-4 text-center mb-16"

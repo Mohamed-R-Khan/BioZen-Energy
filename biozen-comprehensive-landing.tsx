@@ -33,7 +33,6 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { useImpact } from "@/hooks/use-impact"
-import { siteConfig } from "@/lib/site-config"
 import { useState, useEffect } from "react"
 
 const fadeInUp = {
@@ -61,7 +60,7 @@ const Hero = () => (
       >
         <motion.div variants={fadeInUp}>
           <Badge className="bg-green-100 text-green-800 hover:bg-green-200 text-sm px-4 py-2">
-            {siteConfig.hero.badge}
+            India's First Waste-to-Wealth Platform
           </Badge>
         </motion.div>
 
@@ -69,11 +68,12 @@ const Hero = () => (
           className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 max-w-5xl"
           variants={fadeInUp}
         >
-          {siteConfig.hero.title}
+          Turning Waste Into Wealth, One ZenDollar at a Time
         </motion.h1>
 
         <motion.p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed" variants={fadeInUp}>
-          {siteConfig.hero.subtitle}
+          Exchange your segregated waste at smart collection booths for ZenDollar tokens. Redeem eco-friendly rewards
+          while we turn your waste into clean Bio-CNG.
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row gap-4 pt-6" variants={fadeInUp}>
@@ -95,12 +95,18 @@ const Hero = () => (
         </motion.div>
 
         <motion.div className="flex flex-wrap justify-center gap-6 pt-8 text-sm text-gray-500" variants={fadeInUp}>
-          {siteConfig.hero.trustRow.map((item, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full" />
-              {item}
-            </div>
-          ))}
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            Blockchain Verified
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            Carbon Neutral
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            Bangalore, India
+          </div>
         </motion.div>
       </motion.div>
     </div>
@@ -144,7 +150,7 @@ const HowItWorks = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
@@ -152,19 +158,26 @@ const HowItWorks = () => {
         >
           {steps.map((step, index) => (
             <Link href="/how-it-works" key={index}>
-              <motion.div variants={fadeInUp}>
-                <Card className="h-full hover:shadow-xl transition-all duration-300 cursor-pointer group border-2 hover:border-green-200">
-                  <CardHeader className="text-center pb-4">
-                    <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
+              <motion.div variants={fadeInUp} className="h-full">
+                <Card className="h-full min-h-[280px] hover:shadow-xl transition-all duration-300 cursor-pointer group border-2 hover:border-green-200">
+                  <CardContent className="h-full p-6 flex flex-col items-center justify-center text-center space-y-4">
+                    {/* Icon */}
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors flex-shrink-0">
                       <step.icon className="w-8 h-8 text-green-600" />
                     </div>
-                    <Badge variant="outline" className="w-fit mx-auto mb-2 text-green-600 border-green-600">
+
+                    {/* Badge */}
+                    <Badge variant="outline" className="text-green-600 border-green-600 flex-shrink-0">
                       {step.number}
                     </Badge>
-                    <CardTitle className="text-xl font-semibold">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <CardDescription className="text-base">{step.description}</CardDescription>
+
+                    {/* Title */}
+                    <CardTitle className="text-xl font-semibold text-center flex-shrink-0">{step.title}</CardTitle>
+
+                    {/* Description */}
+                    <CardDescription className="text-base text-center leading-relaxed flex-shrink-0">
+                      {step.description}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -376,8 +389,8 @@ const ImpactStats = () => {
         >
           {stats.map((stat, index) => (
             <motion.div key={index} variants={fadeInUp} className="h-full">
-              <Card className="h-full min-h-[200px] hover:shadow-lg transition-shadow">
-                <CardContent className="h-full px-6 py-8 flex flex-col items-center justify-center text-center space-y-4">
+              <Card className="h-full min-h-[220px] hover:shadow-lg transition-shadow">
+                <CardContent className="h-full p-6 flex flex-col items-center justify-center text-center space-y-4">
                   {/* Icon */}
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <stat.icon className="w-8 h-8 text-green-600" />
@@ -389,7 +402,7 @@ const ImpactStats = () => {
                   </div>
 
                   {/* Label */}
-                  <p className="text-gray-600 font-medium text-base leading-tight mt-2 flex-shrink-0">{stat.label}</p>
+                  <p className="text-gray-600 font-medium text-base leading-tight flex-shrink-0">{stat.label}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -431,11 +444,15 @@ const ZenEcosystem = () => (
           <div className="space-y-6">
             <div className="flex items-start space-x-4">
               <div className="w-3 h-3 bg-green-500 rounded-full mt-2" />
-              <p className="text-lg text-gray-700 leading-relaxed">{siteConfig.ecosystem.zenDollar}</p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                ZenDollar Tokens — Blockchain-verified rewards for every kilogram of waste deposited.
+              </p>
             </div>
             <div className="flex items-start space-x-4">
               <div className="w-3 h-3 bg-blue-500 rounded-full mt-2" />
-              <p className="text-lg text-gray-700 leading-relaxed">{siteConfig.ecosystem.zenVolt}</p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                ZenVolt Credits — Track and verify CO₂ saved through our waste-to-energy process.
+              </p>
             </div>
           </div>
           <div className="mt-8">
@@ -520,7 +537,7 @@ const TechMission = () => {
         >
           <Card className="max-w-4xl mx-auto p-8 bg-green-50 border-green-200">
             <blockquote className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed">
-              "{siteConfig.company.mission}"
+              "A circular economy where waste becomes wealth and impact is measurable."
             </blockquote>
           </Card>
         </motion.div>

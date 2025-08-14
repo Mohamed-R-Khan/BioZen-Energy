@@ -1,12 +1,4 @@
 export const siteConfig = {
-  company: {
-    name: "BioZen Energy",
-    mission:
-      "To create a sustainable circular economy where waste becomes wealth, citizens are empowered, and environmental impact is measurably positive.",
-    location: "Bangalore, India",
-    email: "hello@biozenenergy.com",
-    phone: "+91 98765 43210",
-  },
   hero: {
     badge: "India's First Waste-to-Wealth Platform",
     title: "Turning Waste Into Wealth, One ZenDollar at a Time",
@@ -18,46 +10,18 @@ export const siteConfig = {
     zenDollar: "ZenDollar Tokens — Blockchain-verified rewards for every kilogram of waste deposited.",
     zenVolt: "ZenVolt Credits — Track and verify CO₂ saved through our waste-to-energy process.",
   },
+  company: {
+    mission: "A circular economy where waste becomes wealth and impact is measurable.",
+  },
   press: [
-    // Add press items here when available
-    // Example format:
+    // Empty array - add press items here when available
+    // Example structure:
     // {
     //   outlet: "TechCrunch",
-    //   title: "BioZen Energy Raises Series A Funding",
-    //   url: "https://techcrunch.com/biozen-funding",
+    //   title: "BioZen Energy Raises $5M for Waste-to-Wealth Platform",
+    //   url: "https://example.com",
     //   date: "2024-01-15",
-    //   summary: "Bangalore-based startup secures funding to expand waste-to-wealth platform across India"
+    //   summary: "BioZen Energy announces Series A funding to expand their blockchain-based waste management platform across India."
     // }
   ],
-  navigation: {
-    main: [
-      { name: "How It Works", href: "/how-it-works" },
-      { name: "About", href: "/about" },
-      { name: "Partners", href: "/partners" },
-      { name: "Download", href: "/download" },
-    ],
-    footer: {
-      company: [
-        { name: "About", href: "/about" },
-        { name: "Mission", href: "/mission" },
-        { name: "Careers", href: "/careers" },
-        { name: "Press & Media", href: "/press" },
-      ],
-      support: [
-        { name: "Help", href: "/help" },
-        { name: "Privacy", href: "/privacy" },
-        { name: "Terms", href: "/terms" },
-        { name: "Contact", href: "/contact" },
-      ],
-    },
-  },
-  social: {
-    twitter: "https://twitter.com/biozenenergy",
-    linkedin: "https://linkedin.com/company/biozenenergy",
-    instagram: "https://instagram.com/biozenenergy",
-  },
-  app: {
-    ios: "https://apps.apple.com/app/biozen-energy",
-    android: "https://play.google.com/store/apps/details?id=com.biozenenergy.app",
-  },
 }
