@@ -18,6 +18,17 @@ export const siteConfig = {
     zenDollar: "ZenDollar Tokens — Blockchain-verified rewards for every kilogram of waste deposited.",
     zenVolt: "ZenVolt Credits — Track and verify CO₂ saved through our waste-to-energy process.",
   },
+  press: [
+    // Add press items here when available
+    // Example format:
+    // {
+    //   outlet: "TechCrunch",
+    //   title: "BioZen Energy Raises Series A Funding",
+    //   url: "https://techcrunch.com/biozen-funding",
+    //   date: "2024-01-15",
+    //   summary: "Bangalore-based startup secures funding to expand waste-to-wealth platform across India"
+    // }
+  ],
   navigation: {
     main: [
       { name: "How It Works", href: "/how-it-works" },
