@@ -40,6 +40,14 @@ export function Layout({ children }: LayoutProps) {
         </Link>
         <nav className="ml-auto hidden md:flex gap-4 sm:gap-6">
           <Link
+            href="/"
+            className={`text-sm font-medium transition-colors ${
+              isActive("/") ? "text-green-600" : "hover:text-green-600"
+            }`}
+          >
+            Home
+          </Link>
+          <Link
             href="/how-it-works"
             className={`text-sm font-medium transition-colors ${
               isActive("/how-it-works") ? "text-green-600" : "hover:text-green-600"

@@ -20,10 +20,10 @@ export function useImpact() {
   const refresh = useCallback(() => {
     // Simulate data refresh with slight variations
     setData({
-      wasteKg: 125000 + Math.floor(Math.random() * 5000),
-      co2Kg: 45000 + Math.floor(Math.random() * 2000),
-      tokensIssued: 89000 + Math.floor(Math.random() * 3000),
-      members: 12500 + Math.floor(Math.random() * 500),
+      wasteKg: Math.floor(125000 + Math.random() * 5000),
+      co2Kg: Math.floor(45000 + Math.random() * 2000),
+      tokensIssued: Math.floor(89000 + Math.random() * 3000),
+      members: Math.floor(12500 + Math.random() * 500),
     })
   }, [])
 
