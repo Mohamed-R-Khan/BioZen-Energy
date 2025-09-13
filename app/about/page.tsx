@@ -52,14 +52,14 @@ export default function AboutPage() {
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-mono">From Vision to Reality</h2>
                   <div className="space-y-4 text-gray-600 leading-relaxed">
                     <p>
-                      Founded in 2024 in Bangalore, BioZen Energy emerged from a simple yet powerful idea: what if we
+                      Founded in 2025 in Bangalore, BioZen Energy emerged from a simple yet powerful idea: what if we
                       could make waste management rewarding for citizens while creating clean energy?
                     </p>
                     <p>
-                      Our founders, passionate about environmental sustainability and blockchain technology, recognized
-                      the massive opportunity in India's waste management sector. With over 62 million tonnes of waste
-                      generated annually, India needed an innovative solution that could engage citizens, reduce
-                      landfill burden, and create economic value.
+                      Our founder, Raafe Khan, passionate about environmental sustainability and blockchain technology,
+                      recognized the massive opportunity in India's waste management sector. With over 62 million tonnes
+                      of waste generated annually, India needed an innovative solution that could engage citizens,
+                      reduce landfill burden, and create economic value.
                     </p>
                     <p>
                       Today, we're proud to be India's first waste-to-wealth platform, combining smart collection
@@ -79,7 +79,7 @@ export default function AboutPage() {
                   <div className="bg-gradient-to-br from-green-100 to-blue-100 rounded-3xl p-8">
                     <div className="grid grid-cols-2 gap-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-green-600 font-mono">2024</div>
+                        <div className="text-3xl font-bold text-green-600 font-mono">2025</div>
                         <p className="text-sm text-gray-600">Founded</p>
                       </div>
                       <div className="text-center">

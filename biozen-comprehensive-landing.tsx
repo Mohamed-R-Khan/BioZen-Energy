@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -27,6 +27,14 @@ import {
   Apple,
   Play,
   CheckCircle,
+  Scale,
+  Zap,
+  Droplets,
+  Sprout,
+  ArrowRight,
+  FlaskConical,
+  Fuel,
+  Palette,
 } from "lucide-react"
 import Link from "next/link"
 import { useImpact } from "@/hooks/use-impact"
@@ -68,9 +76,10 @@ const Hero = () => (
           Turning Waste Into Wealth, One ZenDollar at a Time
         </motion.h1>
 
-        <motion.p className="text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed" variants={fadeInUp}>
-          Exchange your segregated waste at smart collection booths for ZenDollar tokens. Redeem eco-friendly rewards
-          while we turn your waste into clean Bio-CNG.
+        <motion.p className="text-xl md:text-2xl text-gray-600 max-w-4xl leading-relaxed" variants={fadeInUp}>
+          BioZen Energy is India's first waste-to-wealth platform, rewarding citizens with ZenDollar tokens for waste
+          segregation, while generating clean Bio-CNG and carbon credits through scientific anaerobic digestion and
+          upcycling.
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row gap-4 pt-6" variants={fadeInUp}>
@@ -99,6 +108,10 @@ const Hero = () => (
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full" />
             Carbon Neutral
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            Founded 2025
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full" />
@@ -180,6 +193,145 @@ const HowItWorks = () => {
               </motion.div>
             </Link>
           ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+const ScientificProcess = () => {
+  const processSteps = [
+    {
+      title: "Collection",
+      description: "Segregated waste is deposited at Smart Collection Booths",
+      icon: Recycle,
+      color: "green",
+    },
+    {
+      title: "Pre-processing",
+      description: "Waste is weighed, scanned, and sorted into biodegradable vs. non-biodegradable",
+      icon: Scale,
+      color: "blue",
+    },
+    {
+      title: "Anaerobic Digestion",
+      description: "Biodegradable waste is fed into a biogas digester, producing Bio-CNG and organic slurry",
+      icon: FlaskConical,
+      color: "purple",
+    },
+    {
+      title: "Bio-CNG Utilisation",
+      description: "Captured gas is purified and can be used as a clean fuel alternative to LPG/CNG",
+      icon: Fuel,
+      color: "orange",
+    },
+    {
+      title: "By-products",
+      description:
+        "Organic slurry is converted into fertiliser; non-biodegradables are upcycled or used for art pieces",
+      icon: Sprout,
+      color: "teal",
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="container px-4 md:px-6">
+        <motion.div
+          className="text-center mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">How BioZen Works: From Waste to Energy</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Our scientific approach transforms everyday waste into valuable resources through advanced anaerobic
+            digestion and sustainable upcycling
+          </p>
+        </motion.div>
+
+        {/* Visual Flow Diagram */}
+        <motion.div
+          className="max-w-6xl mx-auto mb-16"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+            {processSteps.map((step, index) => (
+              <React.Fragment key={index}>
+                <motion.div variants={fadeInUp}>
+                  <Card
+                    className={`text-center p-6 h-full bg-${step.color}-50 border-${step.color}-200 hover:shadow-lg transition-shadow`}
+                  >
+                    <div
+                      className={`w-16 h-16 bg-${step.color}-100 rounded-full flex items-center justify-center mx-auto mb-4`}
+                    >
+                      <step.icon className={`w-8 h-8 text-${step.color}-600`} />
+                    </div>
+                    <CardTitle className="text-lg mb-3">{step.title}</CardTitle>
+                    <CardDescription className="text-sm leading-relaxed">{step.description}</CardDescription>
+                  </Card>
+                </motion.div>
+
+                {index < processSteps.length - 1 && (
+                  <motion.div variants={fadeInUp} className="hidden md:flex justify-center">
+                    <ArrowRight className="w-6 h-6 text-gray-400" />
+                  </motion.div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Detailed Benefits */}
+        <motion.div
+          className="grid md:grid-cols-3 gap-8"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInUp}>
+            <Card className="p-8 bg-green-50 border-green-200 h-full">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-8 h-8 text-green-600" />
+              </div>
+              <CardTitle className="text-xl mb-4 text-center">Clean Energy Production</CardTitle>
+              <CardDescription className="text-center leading-relaxed">
+                Our anaerobic digestion process produces Bio-CNG that can replace traditional fossil fuels, reducing
+                carbon emissions by up to 80%
+              </CardDescription>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={fadeInUp}>
+            <Card className="p-8 bg-blue-50 border-blue-200 h-full">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Droplets className="w-8 h-8 text-blue-600" />
+              </div>
+              <CardTitle className="text-xl mb-4 text-center">Organic Fertiliser</CardTitle>
+              <CardDescription className="text-center leading-relaxed">
+                The nutrient-rich slurry from digestion becomes high-quality organic fertiliser, supporting sustainable
+                agriculture
+              </CardDescription>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={fadeInUp}>
+            <Card className="p-8 bg-purple-50 border-purple-200 h-full">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Palette className="w-8 h-8 text-purple-600" />
+              </div>
+              <CardTitle className="text-xl mb-4 text-center">Creative Upcycling</CardTitle>
+              <CardDescription className="text-center leading-relaxed">
+                Non-biodegradable materials are transformed into art pieces and functional products, giving waste a
+                second life
+              </CardDescription>
+            </Card>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -426,54 +578,50 @@ const ImpactStats = () => {
   )
 }
 
-const Team = () => {
-  const teamMembers = [
-    { name: "Raafe Khan", role: "CEO" },
-    { name: "Kirtish Cheyyur", role: "CFO" },
-    { name: "Mishal", role: "CTO" },
-    { name: "Hari Om Trivedi", role: "CRO" },
-    { name: "Wayne", role: "Operations Lead" },
-    { name: "Jocelyn", role: "HR Lead" },
-  ]
+const Founder = () => (
+  <section className="py-24 bg-gray-50">
+    <div className="container px-4 md:px-6">
+      <motion.div
+        className="text-center mb-16"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Founder</h2>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          The visionary behind India's first waste-to-wealth platform
+        </p>
+      </motion.div>
 
-  return (
-    <section className="py-24 bg-gray-50">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          className="text-center mb-16"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            The innovators behind India's first waste-to-wealth platform
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          {teamMembers.map((member, index) => (
-            <motion.div key={index} variants={fadeInUp}>
-              <Card className="text-center p-8 hover:shadow-lg transition-shadow border-2 hover:border-green-200">
-                <CardContent className="p-0 space-y-3">
-                  <h3 className="text-2xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-lg text-green-600 font-semibold">{member.role}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  )
-}
+      <motion.div
+        className="max-w-2xl mx-auto"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
+        <Card className="text-center p-12 hover:shadow-lg transition-shadow border-2 hover:border-green-200">
+          <CardContent className="space-y-6">
+            <div className="w-32 h-32 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Users className="w-16 h-16 text-green-600" />
+            </div>
+            <h3 className="text-3xl font-bold text-gray-900">Raafe Khan</h3>
+            <p className="text-xl text-green-600 font-semibold">Founder & CEO</p>
+            <p className="text-lg text-gray-600 leading-relaxed max-w-lg mx-auto">
+              Raafe Khan — Founder & CEO, BioZen Energy Pvt. Ltd. (2025)
+            </p>
+            <div className="pt-4">
+              <Badge variant="secondary" className="bg-green-100 text-green-800 text-sm px-4 py-2">
+                Pioneering India's Circular Economy
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  </section>
+)
 
 const Newsletter = () => {
   const [email, setEmail] = useState("")
@@ -606,9 +754,10 @@ export default function BioZenComprehensiveLanding() {
     <div className="min-h-screen">
       <Hero />
       <HowItWorks />
+      <ScientificProcess />
       <SmartCollectionBooths />
       <ImpactStats />
-      <Team />
+      <Founder />
       <Newsletter />
       <DownloadApp />
     </div>

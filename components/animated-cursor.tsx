@@ -4,46 +4,35 @@ import { useEffect, useState } from "react"
 
 export function AnimatedCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isPointer, setIsPointer] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const updateCursor = (e: MouseEvent) => {
+    const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
-
-      const target = e.target as HTMLElement
-      setIsPointer(
-        target.tagName === "BUTTON" ||
-          target.tagName === "A" ||
-          target.closest("button") !== null ||
-          target.closest("a") !== null ||
-          window.getComputedStyle(target).cursor === "pointer",
-      )
+      setIsVisible(true)
     }
 
-    window.addEventListener("mousemove", updateCursor)
-    return () => window.removeEventListener("mousemove", updateCursor)
+    const hideCursor = () => setIsVisible(false)
+
+    document.addEventListener("mousemove", updatePosition)
+    document.addEventListener("mouseleave", hideCursor)
+
+    return () => {
+      document.removeEventListener("mousemove", updatePosition)
+      document.removeEventListener("mouseleave", hideCursor)
+    }
   }, [])
 
+  if (!isVisible) return null
+
   return (
-    <>
-      <div
-        className="fixed top-0 left-0 w-4 h-4 bg-green-500 rounded-full pointer-events-none z-50 transition-transform duration-100 ease-out"
-        style={{
-          transform: `translate(${position.x - 8}px, ${position.y - 8}px) scale(${isPointer ? 1.5 : 1})`,
-          mixBlendMode: "difference",
-        }}
-      />
-      <style jsx global>{`
-        * {
-          cursor: none !important;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          .animated-cursor {
-            display: none;
-          }
-        }
-      `}</style>
-    </>
+    <div
+      className="fixed top-0 left-0 w-6 h-6 pointer-events-none z-50 transition-transform duration-100 ease-out"
+      style={{
+        transform: `translate(${position.x - 12}px, ${position.y - 12}px)`,
+      }}
+    >
+      <div className="w-full h-full bg-green-500 rounded-full opacity-20 animate-pulse" />
+    </div>
   )
 }
